@@ -1,4 +1,4 @@
-type TupleToObject<T extends readonly (string | number | symbol)[]> = {
+type TupleToObject<T extends readonly (keyof any)[]> = {
   [p in T[number]]: p
 }
 
