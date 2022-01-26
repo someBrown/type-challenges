@@ -16,4 +16,4 @@ type Flatten<T extends any[]> = T extends [infer First, ...infer Rest]
     : [First, ...Flatten<Rest>]
   : T
 
-type b = Flatten<[1, [2]]>
+// type b = Flatten<[1, [2]]>
