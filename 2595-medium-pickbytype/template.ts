@@ -13,16 +13,16 @@ type PickByType<T extends object, U> = Pick<
   }[keyof T]
 >
 
-// 最后[keyof T]会过滤掉never的类型 返回剩余的联合类型
-type Test<T, U> = {
-  [P in keyof T]: T[P] extends U ? P : never
-}[keyof T]
+// // 最后[keyof T]会过滤掉never的类型 返回剩余的联合类型
+// type Test<T, U> = {
+//   [P in keyof T]: T[P] extends U ? P : never
+// }[keyof T]
 
-interface Model {
-  name: string
-  count: number
-  isReadonly: boolean
-  isEnable: boolean
-}
+// interface Model {
+//   name: string
+//   count: number
+//   isReadonly: boolean
+//   isEnable: boolean
+// }
 
-type D = Test<Model, boolean>
+// type D = Test<Model, boolean>
