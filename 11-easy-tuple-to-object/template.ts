@@ -1,11 +1,3 @@
-type TupleToObject<T extends readonly (keyof any)[]> = {
-  [p in T[number]]: p
+type TupleToObject<T extends readonly string[]> = {
+  [P in T[number]]: P
 }
-
-// const arr = [
-//   {
-//     a: 1,
-//   },
-// ]
-
-// type a = typeof arr[number]
