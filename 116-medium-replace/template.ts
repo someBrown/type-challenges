@@ -1,9 +1,9 @@
 type Replace<
-  S extends string,
-  From extends string,
-  To extends string
-> = From extends ''
-  ? S
-  : S extends `${infer Head}${From}${infer Tail}`
-  ? `${Head}${To}${Tail}`
-  : S
+  T extends string,
+  U extends string,
+  V extends string
+> = U extends ''
+  ? T
+  : T extends `${infer First}${U}${infer Rest}`
+  ? `${First}${V}${Rest}`
+  : T
