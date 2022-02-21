@@ -1,1 +1,1 @@
-type If<C extends boolean, T, F> = C extends true ? T : F
+type If<T extends boolean, U, V> = T extends true ? U : V

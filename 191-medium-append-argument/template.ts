@@ -1,3 +1,3 @@
-type AppendArgument<Fn, A> = Fn extends (...arg: infer P) => infer R
-  ? (...arg: [...P, A]) => R
+type AppendArgument<Fn, U> = Fn extends (...args: infer P) => infer R
+  ? (...args: [...P, U]) => R
   : never
