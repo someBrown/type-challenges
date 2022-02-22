@@ -1,17 +1,8 @@
-type GetLength<T extends any[]> = T['length']
-
-// 把字符串转成tuple 可以获取长度 单string['length']只返回number
 type LengthOfString<
-  S extends string,
-  T extends any[] = []
-> = S extends `${infer F}${infer R}`
-  ? LengthOfString<R, [...T, F]>
-  : GetLength<T>
+  T extends string,
+  L extends unknown[] = []
+> = T extends `${infer F}${infer R}`
+  ? LengthOfString<R, [unknown, ...L]>
+  : L['length']
 
-// type b = LengthOfString<'kumiko'>
-
-// type c = GetLength<[1]>
-
-// type LengthOfArray<S extends string> = S['length']
-
-// type ba = LengthOfArray<'ab'>
+type d = LengthOfString<''>
