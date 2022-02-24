@@ -1,17 +1,12 @@
-// type AppendToObject<T, U extends string, V> = {
-//   [key in keyof T | U]: (T & { [key in U]: V })[key]
-// }
-
-type AppendToObject<T extends object, U extends string, V> = {
-  [K in keyof T | U]: K extends keyof T ? T[K] : V
+type test1 = {
+  key: 'cat'
+  value: 'green'
 }
-
-// type c = AppendToObject<{}, 'a', boolean>
-
-// interface bb {
-//   bb: 1
+type AppendToObject<T extends Record<string, unknown>, U extends string, V> = {
+  [P in keyof T | U]: P extends keyof T ? T[P] : V
+}
+// type AppendToObject2<T extends Record<string, unknown>, U extends string, V> = {
+//   [P in keyof T | U]: { [key in U]: V }
 // }
 
-// type d = {
-//   [K in keyof bb | 'A']: boolean
-// }
+type cc = AppendToObject<test1, 'home' | 'a', boolean>
