@@ -1,3 +1,4 @@
-type StringToUnion<T extends string> = T extends `${infer F}${infer R}`
-  ? F | StringToUnion<R>
-  : never
+type StringToUnion<
+  S extends string,
+  L extends unknown[] = []
+> = S extends `${infer F}${infer R}` ? StringToUnion<R, [F, ...L]> : L[number]
