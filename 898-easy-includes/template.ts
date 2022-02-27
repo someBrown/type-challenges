@@ -4,14 +4,10 @@ type MyEqual<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
   ? true
   : false
 
-type Includes<T extends readonly any[], U> = true extends {
-  [I in keyof T]: MyEqual<T[I], U>
+type Includes<T extends unknown[], U> = true extends {
+  [P in keyof T]: MyEqual<T[P], U>
 }[number]
   ? true
   : false
 
-// type test<T extends readonly any[], U> = {
-//   [I in keyof T]: MyEqual<T[I], U>
-// }[number]
-
-// type res = test<['Kars', 'Esidisi', 'Wamuu', 'Santana'], 'Kars'>
+type cccd = Includes<[{}], { a: 'A' }>
