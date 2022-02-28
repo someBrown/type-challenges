@@ -1,7 +1,7 @@
 type RemoveIndexSignature<T> = {
-  [K in keyof T as string extends K
+  [P in keyof T as string extends P
     ? never
-    : number extends K
+    : number extends P
     ? never
-    : K]: T[K]
+    : P]: T[P]
 }
