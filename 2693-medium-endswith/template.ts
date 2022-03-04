@@ -1,3 +1,3 @@
-type EndsWith<T extends string, U extends string> = T extends `${infer R}${U}`
+type EndsWith<S extends string, T extends string> = S extends `${infer R}${T}`
   ? true
   : false
