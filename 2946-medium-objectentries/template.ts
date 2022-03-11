@@ -1,13 +1,29 @@
-type Require<T> = {
-  [K in keyof T]-?: T[K]
-}
-
-// 注意遍历的对象也要先Require 处理 否则最后的值会带上undefined
 type ObjectEntries<T> = {
-  [K in keyof Require<T>]: [K, Require<T>[K]]
+  [P in keyof T]-?: [
+    P,
+    T[P] extends infer R ? (R extends undefined ? never : R) : never
+  ]
 }[keyof T]
 
-// 用这种方式判断是否带有？ extends infer R | undefined
-// type ObjectEntries<T> = {
-//   [K in keyof T]-?: [K, T[K] extends infer R | undefined ? R : T[K]]
-// }[keyof T]
+type ObjectEntries2<T> = {
+  [P in keyof T]-?: [P, T[P] extends infer R | undefined ? R : never]
+}[keyof T]
+
+type ObjectEntries3<T, U = keyof T> = U extends keyof T
+  ? [U, T[U] extends infer R | undefined ? R : never]
+  : never
+
+interface Model {
+  name: string
+  age: number
+  locations: string[] | null
+}
+
+type A = ObjectEntries<Partial<Model>>
+type B = ObjectEntries2<Partial<Model>>
+type C = ObjectEntries3<Partial<Model>>
+
+type D<T> = {
+  [P in keyof T]: [T[P] extends infer R | undefined ? R : never]
+}
+type c = D<Partial<Model>>
