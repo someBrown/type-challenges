@@ -1,3 +1,3 @@
-type Reverse<T, U extends any[] = []> = T extends [infer F, ...infer Rest]
-  ? Reverse<Rest, [F, ...U]>
+type Reverse<T, U extends unknown[] = []> = T extends [infer F, ...infer R]
+  ? Reverse<R, [F, ...U]>
   : U
