@@ -4,4 +4,4 @@ type BEM<
   M extends string[]
 > = `${B}${E['length'] extends 0 ? '' : `__${E[number]}`}${M['length'] extends 0
   ? ''
-  : `--${M[number]}`} `
+  : `--${M[number]}`}`
