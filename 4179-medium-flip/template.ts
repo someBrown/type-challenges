@@ -1,8 +1,7 @@
-// your answers
-type Flip<T> = {
-  [K in keyof T as T[K] extends PropertyKey
-    ? T[K]
-    : T[K] extends boolean
-    ? `${T[K]}`
-    : never]: K
+type Flip<T extends Record<any, unknown>> = {
+  [P in keyof T as T[P] extends PropertyKey
+    ? T[P]
+    : T[P] extends boolean
+    ? `${T[P]}`
+    : never]: P
 }
