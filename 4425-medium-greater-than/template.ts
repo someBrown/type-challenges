@@ -1,19 +1,9 @@
 type GreaterThan<
-  T extends number,
-  U extends number,
-  L extends any[] = []
-> = L['length'] extends T
+  L extends number,
+  R extends number,
+  U extends unknown[] = []
+> = U['length'] extends L
   ? false
-  : L['length'] extends U
+  : U['length'] extends R
   ? true
-  : GreaterThan<T, U, [any, ...L]>
-
-// type GreaterThan<
-//   N1 extends number,
-//   N2 extends number,
-//   A extends unknown[] = []
-// > = A['length'] extends N1
-//   ? false
-//   : A['length'] extends N2
-//   ? true
-//   : GreaterThan<N1, N2, [0, ...A]>
+  : GreaterThan<L, R, [unknown, ...U]>
