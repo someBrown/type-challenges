@@ -1,8 +1,10 @@
-type Zip<T extends any[], U extends any[], P extends any[] = []> = T extends [
+type Zip<T extends unknown[], U extends unknown[]> = T extends [
   infer F,
   ...infer Rest
 ]
   ? U extends [infer UF, ...infer URest]
-    ? Zip<Rest, URest, [...P, [F, UF]]>
-    : P
-  : P
+    ? [[F, UF], ...Zip<Rest, URest>]
+    : []
+  : []
+
+type cccccc = Zip<[1, 2], [true, false]>
