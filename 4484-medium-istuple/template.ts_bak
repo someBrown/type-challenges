@@ -1,4 +1,4 @@
-type IsTuple<T> = T extends unknown[] | readonly unknown[]
+type IsTuple<T> = T extends any[] | readonly any[]
   ? number extends T['length']
     ? false
     : true
